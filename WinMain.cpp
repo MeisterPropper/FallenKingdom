@@ -13,4 +13,6 @@ int __stdcall WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	// Spiel ausführen
 	return Game.doGameLoop();
+
+
 }
