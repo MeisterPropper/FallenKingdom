@@ -5,7 +5,8 @@ FallenKingdom::FallenKingdom(){
 	m_bRunning = true;		// Anwendung läuft
 	m_bInitialized = false;	// Anwendung wurde noch nicht initialisiert
 	m_sfWindow = nullptr;	// Zeiger mit 0 initialisieren
-	m_sfEvent = nullptr;	//			-"-
+	m_sfEvent = nullptr;		//			-"-
+	m_pRenderer = nullptr;	//			-"-
 
 	DebugUtilities::printInfo("Spielinstanz wurde erfolgreich erstellt...");
 }
@@ -18,6 +19,10 @@ FallenKingdom::~FallenKingdom(){
 	if (m_sfEvent) {
 		delete m_sfEvent;
 		m_sfEvent = nullptr;
+	}
+	if (m_pRenderer) {
+		delete m_pRenderer;
+		m_pRenderer = nullptr;
 	}
 
 	DebugUtilities::printInfo("Spielinstanz wurde erfolgreich zerstört...");
@@ -35,12 +40,22 @@ int FallenKingdom::init()
 		m_sfWindow = new sf::RenderWindow(sf::VideoMode(800, 600, 32), "FallenKingdom");
 		// Event initialisieren
 		m_sfEvent = new sf::Event();
+		// Renderer erstellen
+		m_pRenderer = new RenderManager();
 	}
 	catch (std::bad_alloc & exc) {
 		// Wenn der Speicher nicht erstellt werden konnte,
 		// Rückgabe entsprechendd anpassen
 		DebugUtilities::printInfo("Konnte keinen Speicher reservieren...");
 		iResult = -1;
+		return iResult;
+	}
+	
+	// Renderer initialisieren
+	if (m_pRenderer->init(this->m_sfWindow)) {
+		// Fehler
+		iResult = -1;
+		return iResult;
 	}
 
 	DebugUtilities::printInfo("Spiel wurde erfolgreich initialisiert...");
@@ -66,6 +81,8 @@ int FallenKingdom::doGameLoop() {
 				break;
 			}
 		}
+		// Bild rendern
+		m_pRenderer->render();
 	}
 	DebugUtilities::printInfo("Nachrichtenschleife wird verlassen...");
 	return iResult;

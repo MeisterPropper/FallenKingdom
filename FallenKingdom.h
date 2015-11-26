@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML\Graphics.hpp>
+#include "RenderManager.h"
 
 class FallenKingdom {
 public:
@@ -31,4 +32,6 @@ private:
 	bool			  m_bInitialized;	// Wurde das Spiel bereits initialisiert?
 	sf::RenderWindow* m_sfWindow;		// Hauptfenster des Spiels
 	sf::Event*		  m_sfEvent;		// Eventstruktur
+	RenderManager *   m_pRenderer;		// Renderer
+
 };

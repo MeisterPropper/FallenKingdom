@@ -21,12 +21,18 @@
     <ClCompile Include="FallenKingdom.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="RenderManager.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FallenKingdom.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="DebugUtilities.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderManager.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
