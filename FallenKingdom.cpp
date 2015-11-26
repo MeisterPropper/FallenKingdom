@@ -7,7 +7,7 @@ FallenKingdom::FallenKingdom(){
 	m_sfWindow = nullptr;	// Zeiger mit 0 initialisieren
 	m_sfEvent = nullptr;	//			-"-
 
-	DebugUtilities::printLn("Spielinstanz wurde erfolgreich erstellt...");
+	DebugUtilities::printInfo("Spielinstanz wurde erfolgreich erstellt...");
 }
 
 FallenKingdom::~FallenKingdom(){
@@ -20,7 +20,7 @@ FallenKingdom::~FallenKingdom(){
 		m_sfEvent = nullptr;
 	}
 
-	DebugUtilities::printLn("Spielinstanz wurde erfolgreich zerstört...");
+	DebugUtilities::printInfo("Spielinstanz wurde erfolgreich zerstört...");
 }
 
 int FallenKingdom::init()
@@ -39,17 +39,17 @@ int FallenKingdom::init()
 	catch (std::bad_alloc & exc) {
 		// Wenn der Speicher nicht erstellt werden konnte,
 		// Rückgabe entsprechendd anpassen
-		DebugUtilities::printLn("Konnte keinen Speicher reservieren...");
+		DebugUtilities::printInfo("Konnte keinen Speicher reservieren...");
 		iResult = -1;
 	}
 
-	DebugUtilities::printLn("Spiel wurde erfolgreich initialisiert...");
+	DebugUtilities::printInfo("Spiel wurde erfolgreich initialisiert...");
 
 	return iResult;
 }
 
 int FallenKingdom::doGameLoop() {
-	DebugUtilities::printLn("Nachrichtenschleife wird betreten...");
+	DebugUtilities::printInfo("Nachrichtenschleife wird betreten...");
 	int iResult = 0;
 	// Solange m_bRunning true ist, läuft das Spiel
 	while (m_bRunning) {
@@ -67,6 +67,6 @@ int FallenKingdom::doGameLoop() {
 			}
 		}
 	}
-	DebugUtilities::printLn("Nachrichtenschleife wird verlassen...");
+	DebugUtilities::printInfo("Nachrichtenschleife wird verlassen...");
 	return iResult;
 }
