@@ -18,21 +18,57 @@
     <ClCompile Include="WinMain.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="FallenKingdom.cpp">
+    <ClCompile Include="CFallenKingdom.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="RenderManager.cpp">
+    <ClCompile Include="CRenderManager.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="CMaterial.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="CChunk.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="CWorld.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjectManager.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="CTextureManager.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FallenKingdom.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="DebugUtilities.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="RenderManager.h">
+    <ClInclude Include="CFallenKingdom.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="CRenderManager.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="CObject.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="CMaterial.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="CChunk.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="CWorld.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjectManager.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="CTextureManager.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

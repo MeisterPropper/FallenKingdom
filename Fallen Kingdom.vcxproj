@@ -131,23 +131,37 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <OptimizeForWindowsApplication>true</OptimizeForWindowsApplication>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>sfml-main.lib;sfml-system.lib;sfml-graphics.lib;sfml-window.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="FallenKingdom.cpp" />
-    <ClCompile Include="RenderManager.cpp" />
+    <ClCompile Include="CChunk.cpp" />
+    <ClCompile Include="CFallenKingdom.cpp" />
+    <ClCompile Include="CMaterial.cpp" />
+    <ClCompile Include="CObject.cpp" />
+    <ClCompile Include="CObjectManager.cpp" />
+    <ClCompile Include="CRenderManager.cpp" />
+    <ClCompile Include="CTextureManager.cpp" />
+    <ClCompile Include="CWorld.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CChunk.h" />
+    <ClInclude Include="CMaterial.h" />
+    <ClInclude Include="CObject.h" />
+    <ClInclude Include="CObjectManager.h" />
+    <ClInclude Include="CTextureManager.h" />
+    <ClInclude Include="CWorld.h" />
     <ClInclude Include="DebugUtilities.h" />
-    <ClInclude Include="FallenKingdom.h" />
-    <ClInclude Include="RenderManager.h" />
+    <ClInclude Include="CFallenKingdom.h" />
+    <ClInclude Include="CRenderManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

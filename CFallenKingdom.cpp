@@ -1,7 +1,10 @@
-#include "FallenKingdom.h"
+#include "CFallenKingdom.h"
 #include "DebugUtilities.h"
+#include "CTextureManager.h"
 
-FallenKingdom::FallenKingdom(){
+extern CTextureManager* g_pTextureManager;
+
+CFallenKingdom::CFallenKingdom(){
 	m_bRunning = true;		// Anwendung läuft
 	m_bInitialized = false;	// Anwendung wurde noch nicht initialisiert
 	m_sfWindow = nullptr;	// Zeiger mit 0 initialisieren
@@ -11,7 +14,7 @@ FallenKingdom::FallenKingdom(){
 	DebugUtilities::printInfo("Spielinstanz wurde erfolgreich erstellt...");
 }
 
-FallenKingdom::~FallenKingdom(){
+CFallenKingdom::~CFallenKingdom(){
 	if (m_sfWindow) {
 		delete m_sfWindow;
 		m_sfWindow = nullptr;
@@ -28,7 +31,7 @@ FallenKingdom::~FallenKingdom(){
 	DebugUtilities::printInfo("Spielinstanz wurde erfolgreich zerstört...");
 }
 
-int FallenKingdom::init()
+int CFallenKingdom::init()
 {
 	int iResult = 0;
 	// Wurde init() bereits aufgerufen?
@@ -37,11 +40,11 @@ int FallenKingdom::init()
 	}
 	try {
 		// Fenster initialisieren
-		m_sfWindow = new sf::RenderWindow(sf::VideoMode(800, 600, 32), "FallenKingdom");
+		m_sfWindow = new sf::RenderWindow(sf::VideoMode(1920, 1080, 32), "FallenKingdom");
 		// Event initialisieren
 		m_sfEvent = new sf::Event();
 		// Renderer erstellen
-		m_pRenderer = new RenderManager();
+		m_pRenderer = new CRenderManager();
 	}
 	catch (std::bad_alloc & exc) {
 		// Wenn der Speicher nicht erstellt werden konnte,
@@ -58,14 +61,34 @@ int FallenKingdom::init()
 		return iResult;
 	}
 
+	g_pTextureManager->readTextureList("Data/Textures/TextureTable.dat");
+	
+	/*
+	sf::Texture* tex01 = new sf::Texture;
+	tex01->loadFromFile("Data/Textures/DevTextures/DevTex001.png");
+	CMaterial* pmat01 = new CMaterial("Texture", tex01, 0, 1.0f);
+	sf::Texture* tex02 = new sf::Texture;
+	tex02->loadFromFile("Data/Textures/DevTextures/DevTex002.png");
+	CMaterial* pmat02 = new CMaterial("Texture", tex02, 0, 1.0f);
+	m_ObjectManager.addObject(pmat01);
+	m_ObjectManager.addObject(pmat02);
+	*/
+	m_ObjectManager.loadObjectTable();
+
+	m_pWorld = new CWorld(m_sfWindow, &m_ObjectManager);
+	m_pWorld->load();
+	
+	
+
 	DebugUtilities::printInfo("Spiel wurde erfolgreich initialisiert...");
 
 	return iResult;
 }
 
-int FallenKingdom::doGameLoop() {
+int CFallenKingdom::doGameLoop() {
 	DebugUtilities::printInfo("Nachrichtenschleife wird betreten...");
 	int iResult = 0;
+
 	// Solange m_bRunning true ist, läuft das Spiel
 	while (m_bRunning) {
 		// Auf Ereignisse testen
@@ -82,7 +105,10 @@ int FallenKingdom::doGameLoop() {
 			}
 		}
 		// Bild rendern
-		m_pRenderer->render();
+		//m_pRenderer->render();
+		m_sfWindow->clear();
+		m_pWorld->update();
+		m_sfWindow->display();
 	}
 	DebugUtilities::printInfo("Nachrichtenschleife wird verlassen...");
 	return iResult;

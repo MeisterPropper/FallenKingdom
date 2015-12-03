@@ -1,10 +1,10 @@
 #include <iostream>
 #include <Windows.h>
-#include "FallenKingdom.h"
+#include "CFallenKingdom.h"
 #include "DebugUtilities.h"
 
 int __stdcall WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
-	FallenKingdom Game;
+	CFallenKingdom Game;
 
 	// Spiel initialisieren
 	if (Game.init()) {
@@ -12,6 +12,8 @@ int __stdcall WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		DebugUtilities::printErr("Spiel konnte nicht gestartet werden...");
 		return 1;
 	}
+
+	loadMatFromFile("Data/Materials/devmat001.mat");
 
 	// Spiel ausführen
 	return Game.doGameLoop();
