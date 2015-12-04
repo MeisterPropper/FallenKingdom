@@ -11,26 +11,29 @@ public:
 
 	long loadObjectTable();
 	long addObject(CObject* obj);
-	long delObject(long id);
+	long delObject(std::string name);
 
 	template<typename type>
-	type getObject(long id);
+	type getObject(std::string & name);
 
 private:
-	std::map<long, CObject*>	m_ObjectMap;
+	std::map<std::string, CObject*>	m_ObjectMap;
 };
 
 
 template<typename type>
-inline type CObjectManager::getObject(long id) {
+inline type CObjectManager::getObject(std::string & name) {
 	// Gesuchtes Object finden
-	CObject* tmp = m_ObjectMap.find(id)->second;
+	auto tmp = m_ObjectMap.find(name);
+	if(tmp == m_ObjectMap.end()) {
+		return nullptr;
+	}
 
-	switch (tmp->getType()) {
+	switch (tmp->second->getType()) {
 	case EMaterial: {
-		return dynamic_cast<CMaterial*>(tmp);
+		return dynamic_cast<CMaterial*>(tmp->second);
 	}break;
 	}
 
-	return dynamic_cast<type>(tmp);
+	return dynamic_cast<type>(tmp->second);
 }

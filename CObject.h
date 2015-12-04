@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 class CObject {
 protected:
 	CObject(long type);
@@ -8,15 +10,13 @@ protected:
 
 public:
 	virtual ~CObject();
-	const long getID() const;
+	const std::string getID() const;
 	const long getType() const { return m_Type; }
-	void registerObj() { m_ID = CObject::_getNextID(); }
+	void registerObj(std::string id) { m_ID = id; }
 
 private:
-	long m_ID;
+	std::string m_ID;
 	long m_Type;
-	static long _nextID;
-	static long _getNextID();
 };
 
 enum EObjectType {

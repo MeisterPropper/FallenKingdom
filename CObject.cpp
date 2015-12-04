@@ -14,15 +14,10 @@ CObject & CObject::operator=(CObject&) {
 CObject::~CObject() {
 }
 
-const long CObject::getID() const {
+const std::string CObject::getID() const {
 	return m_ID;
 }
 
-long CObject::_getNextID() {
-	return _nextID++;
-}
-
-long CObject::_nextID = 0;
 
 long getTypeFromString(const char * str)
 {
