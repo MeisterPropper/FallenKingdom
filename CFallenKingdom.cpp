@@ -103,6 +103,8 @@ int CFallenKingdom::doGameLoop() {
 			default:
 				break;
 			}
+			// Event an die Welt weiterleiten
+			m_pWorld->eventHandler(m_sfEvent);
 		}
 		// Bild rendern
 		//m_pRenderer->render();

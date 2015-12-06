@@ -31,7 +31,7 @@ inline type CObjectManager::getObject(std::string & name) {
 
 	switch (tmp->second->getType()) {
 	case EMaterial: {
-		return dynamic_cast<CMaterial*>(tmp->second);
+		dynamic_cast<CMaterial*>(tmp->second);
 	}break;
 	}
 
